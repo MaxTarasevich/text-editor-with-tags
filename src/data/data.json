@@ -1,0 +1,26 @@
+"[
+  {
+    "id": 1,
+    "text": "I wanna go to #shop",
+    "completed": false,
+    "tags": ["#shop"]
+  },
+  {
+    "id": 2,
+    "text": "I wanna learn #react #angular",
+    "completed": true,
+    "tags": ["#react", "#angular"]
+  },
+  {
+    "id": 3,
+    "text": "I wanna build todo app with #react or #angular and #SCSS",
+    "completed": false,
+    "tags": ["#react", "#angular", "#SCSS"]
+  },
+  {
+    "id": 4,
+    "text": "I wanna learn #typescript",
+    "completed": true,
+    "tags": ["#typescript"]
+  }
+]"
