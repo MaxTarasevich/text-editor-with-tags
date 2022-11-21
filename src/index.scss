@@ -1,12 +1,27 @@
 @use './styles/colors' as *;
 
-body{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    background-color: $yellow;
-    color:$dark-blue;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: $yellow;
+  color: $dark-blue;
+}
+
+.icons {
+  color: $dark-blue;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: color 0.4s ease-in-out;
+
+  &:hover {
+    color: #379237;
+  }
 }

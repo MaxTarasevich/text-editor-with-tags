@@ -1,4 +1,4 @@
-"[
+[
   {
     "id": 1,
     "text": "I wanna go to #shop",
@@ -23,4 +23,5 @@
     "completed": true,
     "tags": ["#typescript"]
   }
-]"
+]
+

@@ -1,0 +1,26 @@
+.createTodo {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  &__input {
+    flex: 1;
+    padding: 10px;
+    outline: none;
+    border-color: blueviolet;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+
+  &__btn {
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    font-size: 20px;
+  }
+}

@@ -1,32 +1,13 @@
 import React from 'react'
-import Todo from '../Todo/Todo'
 
 import './TodoList.scss'
 
-
-interface Data{
-    id: number
-    text: string
-    completed: boolean
-    tags: string[]
-  }
-
-interface Props{
-    data?:Data[]
+interface Props {
+  children?: any
 }
 
-
-
-const TodoList: React.FC<Props> = ({data}) => {
-  return (
-    <div>
-     {
-        data ? (data.map((todo)=>(
-            <Todo {...todo}/>
-        ))) : 'Loading'
-     }
-    </div>
-  )
+const TodoList: React.FC<Props> = ({ children }) => {
+  return <div className="list">{children}</div>
 }
 
 export default TodoList
