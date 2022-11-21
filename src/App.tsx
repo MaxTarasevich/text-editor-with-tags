@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './App.scss'
 
 import CreateTodo from './components/CreateTodo/CreateTodo'
+import Tags from './components/Tags/Tags'
 import Todo from './components/Todo/Todo'
 import TodoList from './components/TodoList/TodoList'
 
@@ -62,6 +63,7 @@ function App() {
     <div className="App">
       <h1>Text editor with tags</h1>
       <CreateTodo addNewTodo={addNewTodo} />
+      <Tags todos={todos} />
       <TodoList>
         {todos ? (
           todos.length > 0 ? (
