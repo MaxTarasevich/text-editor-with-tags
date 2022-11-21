@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { AiFillCheckCircle, AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import { BsCircle } from 'react-icons/bs'
+import CreateTodo from '../CreateTodo/CreateTodo'
 
 import './Todo.scss'
+
+interface Data {
+  id: number
+  text: string
+  completed: boolean
+  tags: string[]
+}
 
 interface Props {
   id: number
@@ -12,6 +20,7 @@ interface Props {
   tags: string[]
   completeTodo: (id: number) => void
   deleteTodo: (id: number) => void
+  editTodo: (id: number, todo: Data) => void
 }
 
 const Todo: React.FC<Props> = ({
@@ -21,8 +30,21 @@ const Todo: React.FC<Props> = ({
   tags,
   completeTodo,
   deleteTodo,
+  editTodo,
 }) => {
-  return (
+  const [edit, setEdit] = useState(false)
+
+  return edit ? (
+    <div>
+      <CreateTodo
+        editTodo={editTodo}
+        edit={edit}
+        setEdit={setEdit}
+        id={id}
+        text={text}
+      />
+    </div>
+  ) : (
     <div className="todo">
       {completed ? (
         <AiFillCheckCircle
@@ -39,9 +61,13 @@ const Todo: React.FC<Props> = ({
       )}
 
       <span className="todo__text"> {text}</span>
-      <AiFillEdit className="icons" title="edit" />
-      <AiFillDelete
+      <AiFillEdit
         className="icons"
+        title="edit"
+        onClick={() => setEdit(!edit)}
+      />
+      <AiFillDelete
+        className="icons icons-delete"
         title="delete"
         onClick={() => deleteTodo(id)}
       />

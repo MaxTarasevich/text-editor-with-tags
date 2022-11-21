@@ -41,6 +41,17 @@ function App() {
     setTodos(newTodos)
   }
 
+  function editTodo(id: number, todo: Data) {
+    const newTodo = todos?.map((el) => {
+      if (el.id === id) {
+        el.text = todo.text
+        el.completed = todo.completed
+      }
+      return el
+    })
+    setTodos(newTodo)
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setTodos(dataJson)
@@ -49,6 +60,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Text editor with tags</h1>
       <CreateTodo addNewTodo={addNewTodo} />
       <TodoList>
         {todos ? (
@@ -59,6 +71,7 @@ function App() {
                 {...todo}
                 completeTodo={completeTodo}
                 deleteTodo={deleteTodo}
+                editTodo={editTodo}
               />
             ))
           ) : (

@@ -13,20 +13,39 @@ interface Data {
 }
 
 interface Props {
-  addNewTodo: (todo: Data) => void
+  addNewTodo?: (todo: Data) => void
+  editTodo?: (id: number, todo: Data) => void
+  edit?: boolean
+  setEdit?: React.Dispatch<React.SetStateAction<boolean>>
+  id?: number
+  text?: string
 }
 
-const CreateTodo: React.FC<Props> = ({ addNewTodo }) => {
+const CreateTodo: React.FC<Props> = ({
+  addNewTodo,
+  editTodo,
+  edit,
+  setEdit,
+  id,
+  text,
+}) => {
   const [todo, setTodo] = useState<Data>({
     id: Date.now(),
-    text: '',
+    text: text ? text : '',
     completed: false,
     tags: [],
   })
 
   function handlerSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    addNewTodo(todo)
+    if (edit && !!editTodo && id && !!setEdit) {
+      editTodo(id, todo)
+      setEdit(!edit)
+    }
+    if (!!addNewTodo) {
+      addNewTodo(todo)
+    }
+
     setTodo({
       id: Date.now(),
       text: '',
