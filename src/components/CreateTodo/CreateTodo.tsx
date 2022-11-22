@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { AiFillCheckCircle, AiFillSave } from 'react-icons/ai'
 import { BsCircle } from 'react-icons/bs'
@@ -36,6 +36,12 @@ const CreateTodo: React.FC<Props> = ({
     tags: [],
   })
 
+  const focusRef = useRef<HTMLInputElement>(null)
+
+  useEffect(()=>{
+    focusRef.current?.focus()
+  },[])
+
   function handlerSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (edit && !!editTodo && id && !!setEdit) {
@@ -69,7 +75,7 @@ const CreateTodo: React.FC<Props> = ({
           onClick={() => setTodo({ ...todo, completed: !todo.completed })}
         />
       )}
-      <input
+      <input ref={focusRef}
         className="createTodo__input"
         type="text"
         placeholder="Write your todo here"
