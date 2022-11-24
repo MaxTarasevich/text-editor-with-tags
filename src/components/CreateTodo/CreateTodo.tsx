@@ -38,12 +38,21 @@ const CreateTodo: React.FC<Props> = ({
 
   const focusRef = useRef<HTMLInputElement>(null)
 
-  useEffect(()=>{
+  function addTags(todo: Data, e: React.ChangeEvent<HTMLInputElement>) {
+    const tagsArr = todo.text
+      .split(' ')
+      .filter((el) => el.length >= 1 && el[0] === '#')
+
+    setTodo({ ...todo, tags: tagsArr, text: e.target.value })
+  }
+
+  useEffect(() => {
     focusRef.current?.focus()
-  },[])
+  }, [])
 
   function handlerSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+
     if (edit && !!editTodo && id && !!setEdit) {
       editTodo(id, todo)
       setEdit(!edit)
@@ -75,12 +84,13 @@ const CreateTodo: React.FC<Props> = ({
           onClick={() => setTodo({ ...todo, completed: !todo.completed })}
         />
       )}
-      <input ref={focusRef}
+      <input
+        ref={focusRef}
         className="createTodo__input"
         type="text"
         placeholder="Write your todo here"
         value={todo.text}
-        onChange={(e) => setTodo({ ...todo, text: e.target.value })}
+        onChange={(e) => addTags(todo, e)}
       />
       <button className="createTodo__btn">
         {''}
